@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        textarea {
+            width: 80%;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Code Viewer</h2>
+    <textarea id="codeInput" placeholder="Gib deinen Code hier ein"></textarea>
+    <br>
+    <button onclick="createPreviewPage()">Vorschau erstellen</button>
+
+    <script>
+        function createPreviewPage() {
+            // Code aus dem Textfeld abrufen
+            var code = document.getElementById('codeInput').value;
+
+            // Neues Fenster öffnen
+            var previewWindow = window.open();
+            
+            // HTML-Inhalt für das Vorschaufenster erstellen
+            var previewContent = `
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Code Preview</title>
+                    <style>
+                        body {
+                            font-family: 'Courier New', Courier, monospace;
+                            padding: 20px;
+                            white-space: pre-wrap; /* Zeilenumbrüche beibehalten */
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h2>Code Preview</h2>
+                    <pre></pre>
+                </body>
+                </html>
+            `;
+
+            // HTML-Inhalt in das Vorschaufenster schreiben
+            previewWindow.document.write(previewContent);
+            // Fensterinhalt abschließen
+            previewWindow.document.close();
+        }
+    </script>
+</body>
+</html>
